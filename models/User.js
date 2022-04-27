@@ -1,30 +1,30 @@
 const Sequelize=require('sequelize')
 const sequelize=require('../database/connection')
 
-module.exports=sequelize.define('Post',{
-    post_id:{
+module.exports=sequelize.define('users',{
+    user_id:{
         type:Sequelize.INTEGER(11),
         allowNull:false,
         autoIncrement:true,
         primaryKey:true
     },
-    title:{
+    name:{
         type:Sequelize.STRING,
         allowNull:false
     },
-    description:{
-        type:Sequelize.TEXT,
-        allowNull:false
-    },
-    image:{
+    address:{
         type:Sequelize.STRING,
         allowNull:false
     },
-    author:{
+    email:{
+        type:Sequelize.STRING,
+        allowNull:false
+    },
+    password:{
         type:Sequelize.STRING,
         allowNull:false
     },  
-    createdAt:Sequelize.DATE,
-    updatedAt:Sequelize.DATE
 
+},{
+    timestamps:false
 })

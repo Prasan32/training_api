@@ -1,5 +1,5 @@
 const Sequelize=require('sequelize')
-const sequelize=new Sequelize('node_training_api','root','',{
+const sequelize=new Sequelize('api_training','root','',{
     host:'localhost',
     dialect:'mysql'
 })
