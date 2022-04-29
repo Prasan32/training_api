@@ -1,5 +1,6 @@
- const joi=require('joi')
+const joi=require('joi')
 const User=require('../models/User')
+const jwt=require('jsonwebtoken')
 
 exports.saveUser=async(req,res)=>{
 
@@ -83,8 +84,8 @@ exports.login=async (req,res)=>{
         }else{
           //check password
           if(user.password==password){
-              //
-
+              let access_token=jwt.sign({id:user.user_id,email:user.email},'thisismysecret',{expiresIn:'3600s'})
+              res.status(200).json({access_token:access_token})
 
           }else{
               res.status(400).json({
@@ -96,7 +97,10 @@ exports.login=async (req,res)=>{
         }
 
     } catch (error) {
-        
+        res.status(500).json({
+            "message":"Internal Server error",
+            "status":false
+        })
     }
 
 }
